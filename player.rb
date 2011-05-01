@@ -16,7 +16,7 @@ class Player
     if @x > (@game_window.width - 50)
       @x = @game_window.width - 50
     else
-      @x = @x + 3
+      @x = @x + speed
     end
   end
 
@@ -24,8 +24,12 @@ class Player
     if @x < 0
       @x = 0
     else
-      @x = @x - 3
+      @x = @x - speed
     end
+  end
+
+  def speed
+    return 3
   end
 
 end
