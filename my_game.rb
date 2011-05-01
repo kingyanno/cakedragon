@@ -5,6 +5,7 @@ require 'fire'
 require 'platform'
 require 'background'
 
+
 class MyGame < Gosu::Window
   def initialize
     super(800, 500, false)
