@@ -13,25 +13,36 @@ class MyGame < Gosu::Window
     @platform = Platform.new(self)
     @fire = Fire.new(self)
     @background = Background.new(self)
+    @play = true
   end
 
   def update
-    if button_down? Gosu::Button::KbLeft
-      @player.move_left
-    end
+    if @play
+      if button_down? Gosu::Button::KbLeft
+        @player.move_left
+      end
 
-    if button_down? Gosu::Button::KbRight
-      @player.move_right
-    end
+      if button_down? Gosu::Button::KbRight
+        @player.move_right
 
-    @platform.update
-  end
+      if @player.hit_by? @fire
+            stop_game!
+          end
+      end
+
+      @platform.update
+          end
+end
 
   def draw
     @player.draw
     @fire.draw
     @platform.draw
     @background.draw
+  end
+
+  def stop_game!
+    @play = false
   end
 end
 

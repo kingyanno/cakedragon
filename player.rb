@@ -28,6 +28,10 @@ class Player
     end
   end
 
+  def hit_by? (fire)
+    Gosu::distance(@x, @y, fire.x, fire.y) < 50
+  end
+
   def speed
     return 3
   end

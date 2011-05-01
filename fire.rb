@@ -10,5 +10,13 @@ class Fire
   def draw
     @icon.draw(@x, @y, 2)
   end
+
+  def x
+    @x
+  end
+
+  def y
+    @y
+  end
 end
 
