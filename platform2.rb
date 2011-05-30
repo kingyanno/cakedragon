@@ -1,9 +1,9 @@
 require 'point'
 
-class Platform
+class Platform2
 
   StartingPosition = Point.new(200, 380)
-  EndingPosition = Point.new(400, 380)
+  EndingPosition = Point.new(300, 380)
 
   def initialize(game_window)
     @game_window = game_window

@@ -1,9 +1,13 @@
 require 'rubygems'
-require 'Gosu'
+require 'gosu'
+$: << File.dirname( __FILE__)
+
 require 'player'
 require 'fire'
 require 'platform'
 require 'background'
+require 'sign'
+require 'my_game2'
 
 
 class MyGame < Gosu::Window
@@ -13,7 +17,9 @@ class MyGame < Gosu::Window
     @platform = Platform.new(self)
     @fire = Fire.new(self)
     @background = Background.new(self)
+    @sign = Sign.new(self)
     @play = true
+
   end
 
   def update
@@ -25,26 +31,43 @@ class MyGame < Gosu::Window
       if button_down? Gosu::Button::KbRight
         @player.move_right
 
-      if @player.hit_by? @fire
+      if @hit_by_fire
+        if @player.hit_by? @fire
             stop_game!
-          end
       end
 
       @platform.update
           end
-end
+
+      if @sign.hit_by? @player
+            next_level!
+          end
+      end
+  end
 
   def draw
-    @player.draw
-    @fire.draw
-    @platform.draw
-    @background.draw
+    if @play
+      @player.draw
+      @fire.draw
+      @platform.draw
+      @background.draw
+      @sign.draw
+    end
   end
 
   def stop_game!
     @play = false
   end
+
+  def next_level!
+    @play = false
+    @play2 = true
+  end
+  end
 end
+
+
+
 
 window = MyGame.new
 window.show

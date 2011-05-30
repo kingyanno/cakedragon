@@ -1,4 +1,4 @@
-class Player
+class Player2
 
 
   def initialize(game_window)
@@ -35,7 +35,7 @@ class Player
     end
   end
 
-  def hit_by? (fire)
+  def hit_by? (fire2)
     Gosu::distance(@x, @y, fire.x, fire.y) < 50
   end
 

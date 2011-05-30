@@ -1,4 +1,4 @@
-class Fire
+class Fire2
 
   def initialize(game_window)
     @game_window = game_window
